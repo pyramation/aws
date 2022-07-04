@@ -28,7 +28,7 @@ export const listKops = ({ region }) => {
       const nodes = instances.filter((inst) => inst.name.match(/^nodes/));
       const traefik = instances.filter((inst) => inst.name.match(/^traefik$/));
       const master = instances.filter((inst) => inst.name.match(/^master/));
-      const privateIps = nodes.map((node) => node.private);
+      const privateIps = nodes.map((node) => node.private).filter(Boolean);
       resolve({ nodes, traefik, master, privateIps });
     });
   });
